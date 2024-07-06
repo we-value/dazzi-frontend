@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import "./Link.css";
 import axios from "axios";
 
-function App() {
+const Link = () => {
   const [data, setData] = useState("");
 
   useEffect(() => {
@@ -22,6 +22,6 @@ function App() {
       <h2>받아온 값 : {data}</h2>
     </>
   );
-}
+};
 
-export default App;
+export default Link;
