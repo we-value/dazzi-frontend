@@ -17,7 +17,9 @@ const App = () => {
 
 const Home = () => {
   const token = localStorage.getItem("token");
-  if (!token) {
+  const nickname = localStorage.getItem("nickname");
+
+  if (!token && !nickname) {
     return (
       <div>
         <h1>Welcome</h1>
@@ -29,7 +31,7 @@ const Home = () => {
   return (
     <div>
       <h1>Logged In</h1>
-      <p>Your JWT: {token}</p>
+      <p>Your JWT: {nickname}</p>
     </div>
   );
 };

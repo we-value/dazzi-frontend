@@ -11,13 +11,14 @@ const KakaoCallback = () => {
     if (code) {
       axios({
         method: "POST",
-        url: "http://localhost:8080/oauth2/kakao",
+        url: "http://localhost:8080/oauth/kakao",
         data: JSON.stringify({ code }),
         headers: { "Content-type": "application/json" },
       })
         .then((response) => {
           if (response.data.token != "") {
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("nickname", response.data.nickname);
           }
 
           navigate("/");
