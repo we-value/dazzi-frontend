@@ -1,4 +1,4 @@
-.Button {
+.button {
   background-color: rgb(236, 236, 236);
   border: none;
   border-radius: 5px;
@@ -7,13 +7,13 @@
   white-space: nowrap;
 }
 
-.Button_LOGIN {
+.button_login {
   background-color: rgb(100, 201, 100);
   color: white;
   cursor: auto;
 }
 
-.Button_LOGOUT {
+.button_logout {
   background-color: rgb(253, 86, 95);
   color: white;
   cursor: pointer;

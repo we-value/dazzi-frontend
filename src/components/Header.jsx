@@ -39,14 +39,14 @@ const Header = ({ title, leftChild }) => {
   };
 
   return (
-    <header className="Hedaer">
+    <header className="header">
       <div className="header_left">{leftChild}</div>
       <div className="header_center">{title}</div>
       <div className="header_right">
         {!authorizationToken ? (
-          <Button onClick={loginWithKakao} text="로그인" type="LOGOUT"></Button>
+          <Button onClick={loginWithKakao} text="로그인" type="logout"></Button>
         ) : (
-          <Button text={nickname} type="LOGIN"></Button>
+          <Button text={`${nickname}님`} type="login"></Button>
         )}
       </div>
     </header>

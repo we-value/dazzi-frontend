@@ -1,28 +1,27 @@
-.Hedaer {
+.header {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px 0px;
-  border-bottom: 1px solid rgb(226, 226, 226);
 }
 
-.Header > div {
+.header > div {
   display: flex;
 }
 
-.Hedaer .header_center {
+.header .header_center {
   width: 50%;
   font-size: 25px;
   text-align: center;
 }
 
-.Hedaer .header_left {
+.header .header_left {
   width: 25%;
   text-align: left;
   justify-content: flex-start;
 }
 
-.Hedaer .header_right {
+.header .header_right {
   width: 25%;
   text-align: right;
   justify-content: flex-end;

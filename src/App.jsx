@@ -1,13 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Header from "./components/Header";
+import Product from "./pages/Product";
+import SellerNew from "./pages/SellerNew";
+import ProductNew from "./pages/ProductNew";
 
 const App = () => {
   return (
     <>
-      <Header title="DAZZI" />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Product />} />
+        <Route path="/sellerNew" element={<SellerNew />} />
+        <Route path="/productNew" element={<ProductNew />} />
       </Routes>
     </>
   );

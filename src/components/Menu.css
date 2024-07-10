@@ -1,0 +1,9 @@
+.menu {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  height: 30px;
+}
