@@ -1,33 +1,45 @@
-import "./SellerNew.css";
+import "./SellerEdit.css";
 import Menu from "../components/Menu";
 import Header from "../components/Header";
 import SellerEditor from "../components/SellerEditor";
-import { useEffect } from "react";
-import { apiGet, apiPost } from "../utils/axios/apiUtil";
+import { useEffect, useState } from "react";
+import { apiGet, apiPatch } from "../utils/axios/apiUtil";
 import { nvl } from "../utils/formatUtils";
 import { useNavigate } from "react-router-dom";
 
-const SellerNew = () => {
+const SellerEdit = () => {
   const nav = useNavigate();
+  const [seller, setSeller] = useState({
+    id: "",
+    name: "",
+    introduction: "",
+  });
 
   useEffect(() => {
     apiGet("/seller")
       .then((res) => {
-        if (nvl(res.id) !== "") {
-          nav(`/sellerEdit/${res.id}`);
+        if (nvl(res.id) === "") {
+          nav("/sellerNew");
         }
+
+        setSeller({
+          id: nvl(res.id),
+          name: nvl(res.name),
+          introduction: nvl(res.introduction),
+        });
       })
       .catch((error) => console.error(error));
   }, [nav]);
 
   const onSubmit = (input) => {
-    apiPost("/seller", {
+    apiPatch("/seller", {
+      id: nvl(input.id),
       name: nvl(input.name),
       introduction: nvl(input.introduction),
     })
       .then((res) => {
-        alert("판매자가 등록되었습니다.");
         if (nvl(res.id) !== "") {
+          alert("판매자가 수정되었습니다.");
           nav(`/sellerEdit/${res.id}`);
         }
       })
@@ -38,9 +50,9 @@ const SellerNew = () => {
     <>
       <Header title="판매자 관리" />
       <Menu />
-      {<SellerEditor onSubmit={onSubmit} />}
+      {<SellerEditor initData={seller} onSubmit={onSubmit} />}
     </>
   );
 };
 
-export default SellerNew;
+export default SellerEdit;

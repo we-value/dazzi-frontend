@@ -7,13 +7,13 @@
   white-space: nowrap;
 }
 
-.button_login {
+.button_positive {
   background-color: rgb(100, 201, 100);
   color: white;
   cursor: auto;
 }
 
-.button_logout {
+.button_negative {
   background-color: rgb(253, 86, 95);
   color: white;
   cursor: pointer;

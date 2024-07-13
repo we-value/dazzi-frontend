@@ -3,7 +3,7 @@ import axiosInstance from "./axiosInstance";
 // GET 요청
 export const apiGet = (url, params = {}) => {
   return axiosInstance
-    .get(url, { params })
+    .get(url, JSON.stringify(params))
     .then((response) => response.data)
     .catch((error) => {
       handleError(error);
@@ -12,9 +12,20 @@ export const apiGet = (url, params = {}) => {
 };
 
 // POST 요청
-export const apiPost = (url, data) => {
+export const apiPost = (url, params = {}) => {
   return axiosInstance
-    .post(url, data)
+    .post(url, JSON.stringify(params))
+    .then((response) => response.data)
+    .catch((error) => {
+      handleError(error);
+      throw error;
+    });
+};
+
+// PATCH 요청
+export const apiPatch = (url, params = {}) => {
+  return axiosInstance
+    .patch(url, JSON.stringify(params))
     .then((response) => response.data)
     .catch((error) => {
       handleError(error);
@@ -23,9 +34,9 @@ export const apiPost = (url, data) => {
 };
 
 // PUT 요청
-export const apiPut = (url, data) => {
+export const apiPut = (url, params = {}) => {
   return axiosInstance
-    .put(url, data)
+    .put(url, JSON.stringify(params))
     .then((response) => response.data)
     .catch((error) => {
       handleError(error);
@@ -34,9 +45,9 @@ export const apiPut = (url, data) => {
 };
 
 // DELETE 요청
-export const apiDelete = (url) => {
+export const apiDelete = (url, params = {}) => {
   return axiosInstance
-    .delete(url)
+    .delete(url, JSON.stringify(params))
     .then((response) => response.data)
     .catch((error) => {
       handleError(error);

@@ -5,7 +5,7 @@ const Menu = () => {
   const menus = [
     { menuPath: "/", title: "상품 리스트" },
     { menuPath: "/productNew", title: "상품 등록" },
-    { menuPath: "/sellerNew", title: "판매자 등록" },
+    { menuPath: "/sellerNew", title: "판매자 관리" },
   ];
   return (
     <div className="menu">

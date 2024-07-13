@@ -6,18 +6,18 @@ import { apiGet } from "../utils/axios/apiUtil";
 import { useNavigate } from "react-router-dom";
 
 const ProductNew = () => {
-  const navigate = useNavigate();
+  const nav = useNavigate();
 
   useEffect(() => {
     apiGet("/member/isSeller")
       .then((res) => {
         if (res.isSeller == "" || res.isSeller == "N") {
-          alert("판매자 등록을 먼저 해주세요!!");
-          navigate("/");
+          alert("판매자 등록을 먼저 해주세요.");
+          nav("/sellerNew");
         }
       })
       .catch((error) => console.error(error));
-  }, [navigate]);
+  }, [nav]);
 
   return (
     <>
