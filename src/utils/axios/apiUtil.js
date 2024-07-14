@@ -1,9 +1,9 @@
 import axiosInstance from "./axiosInstance";
 
 // GET 요청
-export const apiGet = (url, params = {}) => {
+export const apiGet = (url = {}) => {
   return axiosInstance
-    .get(url, JSON.stringify(params))
+    .get(url)
     .then((response) => response.data)
     .catch((error) => {
       handleError(error);

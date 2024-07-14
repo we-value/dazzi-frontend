@@ -1,14 +1,15 @@
-import "./ProductNew.css";
+import "./SellerEdit.css";
 import Menu from "../components/Menu";
 import Header from "../components/Header";
-import { useEffect, useState } from "react";
-import { apiGet, apiPost } from "../utils/axios/apiUtil";
-import { useNavigate } from "react-router-dom";
-import { nvl } from "../utils/formatUtils";
 import ProductEditor from "../components/ProductEditor";
+import { useEffect, useState } from "react";
+import { apiGet, apiPatch } from "../utils/axios/apiUtil";
+import { nvl } from "../utils/formatUtils";
+import { useNavigate, useParams } from "react-router-dom";
 
-const ProductNew = () => {
+const SellerEdit = () => {
   const nav = useNavigate();
+  const params = useParams();
   const [product, setProduct] = useState({
     sellerId: "",
     productId: "",
@@ -18,29 +19,33 @@ const ProductNew = () => {
   });
 
   useEffect(() => {
-    apiGet("/seller")
+    apiGet(`/product/${params.id}`)
       .then((res) => {
-        if (nvl(res.id) === "") {
-          alert("판매자 등록을 먼저 해주세요.");
-          nav("/sellerNew");
+        if (nvl(res.productId) === "") {
+          nav("/productNew");
         }
         setProduct({
-          sellerId: res.id,
+          sellerId: nvl(res.sellerId),
+          productId: nvl(res.productId),
+          title: nvl(res.title),
+          price: nvl(res.price),
+          description: nvl(res.description),
         });
       })
       .catch((error) => console.error(error));
-  }, [nav]);
+  }, [nav, params]);
 
   const onSubmit = (input) => {
-    apiPost("/product", {
+    apiPatch("/product", {
       sellerId: nvl(input.sellerId),
+      productId: nvl(input.productId),
       title: nvl(input.title),
       price: nvl(input.price),
       description: nvl(input.description),
     })
       .then((res) => {
-        alert("상품이 등록되었습니다.");
         if (nvl(res.id) !== "") {
+          alert("상품이 수정되었습니다.");
           nav(`/productEdit/${res.id}`);
         }
       })
@@ -49,11 +54,11 @@ const ProductNew = () => {
 
   return (
     <>
-      <Header title="상품 등록" />
+      <Header title="상품 관리" />
       <Menu />
-      <ProductEditor initData={product} onSubmit={onSubmit} />
+      {<ProductEditor initData={product} onSubmit={onSubmit} />}
     </>
   );
 };
 
-export default ProductNew;
+export default SellerEdit;

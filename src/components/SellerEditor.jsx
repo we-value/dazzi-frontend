@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const ProductEditor = ({ initData, onSubmit }) => {
+const SellerEditor = ({ initData, onSubmit }) => {
   const nav = useNavigate();
   const [input, setInput] = useState({
     id: "",
@@ -60,10 +60,10 @@ const ProductEditor = ({ initData, onSubmit }) => {
           text={"작성완료"}
           type={"positive"}
         />
-        <Button onClick={() => nav(-1)} text={"취소하기"} type="negative" />
+        <Button onClick={() => nav("/")} text={"취소하기"} type="negative" />
       </section>
     </div>
   );
 };
 
-export default ProductEditor;
+export default SellerEditor;
